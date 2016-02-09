@@ -1,0 +1,71 @@
+#info_note {
+	position:absolute;
+	display:none;
+	z-index:100;
+	max-width:300px;
+	padding:0 2px 5px 5px;
+}
+
+#info_note * {
+	font-size:9.5px;
+	font-family:Verdana, Helvetica, Arial, sans-serif;
+	text-align:left;
+}
+
+#info_note table {
+	border:1px solid #222222;
+	background-color:#E9EEF3;
+	padding:2px 2px;
+}
+
+#info_note .min-width {
+	width:60px;
+	height:1px;
+	overflow:hidden;
+	margin-top:-1px;
+}
+
+#note-close {
+	cursor:pointer;
+	display:block;
+	width:11px;
+	height:11px;
+	background: url("./images/prime_bbcode_note_close.gif") no-repeat top right;
+	background-position:0 -11px;
+	position:absolute;
+	top:-5px;
+	left:0px;
+}
+
+#note-close:hover {
+	background-position:0 0px;
+}
+
+#note-lock {
+	display:none;
+	position:absolute;
+	white-space:nowrap;
+	top:-20px;
+	color:infotext;
+	background-color:infobackground;
+	border:1px solid infotext;
+	padding:2px 2px;
+}
+
+.prime_bbcode_note {
+	display:none;
+}
+
+.prime_bbcode_note_text {
+	cursor:pointer;
+	text-decoration:underline;
+}
+
+.prime_bbcode_note_spur {
+	cursor:pointer;
+	display:inline-block;
+	width:18px; /* width of the icon, plus padding */
+	height:14px;  /* height of the icon */
+	vertical-align:top;
+	background: url("./images/prime_bbcode_note.gif") no-repeat top right;
+}
