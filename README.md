@@ -7,5 +7,5 @@ Build Status: [![Build Status](https://travis-ci.org/3D-I/notebbcode.svg)](https
 
 ## Usage
 
-![Screenshot](online-since.png)
+![Screenshot](Screenshot_1.png)
 
