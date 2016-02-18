@@ -15,6 +15,8 @@ namespace threedi\notebbcode;
 
 class ext extends \phpbb\extension\base
 {
+	const VERSION_NOTEBBCODE = '1.0.0-b3';
+
 	/**
 	* Check whether or not the extension can be enabled.
 	* The current phpBB version should meet or exceed

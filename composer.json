@@ -1,9 +1,9 @@
 {
 	"name": "threedi/notebbcode",
 	"type": "phpbb-extension",
-	"description": " Add a Note BBCode, which displays a tooltip-like box containing text when the mouse is moved over the Note BBCode icon. The text inside the box can accept BBCodes, and the pop-up box will close automatically when the mouse is moved off the icon (unless the user clicks the icon, which will make the pop-up box stick in place until manually closed or until the cursor is moved a certain distance away from the pop-up box). Parses also smilies. BBcodes are automatically installed by the extension, no need to any manual input.",
+	"description": " Add a Note BBCode, which displays a tooltip-like box containing text when the mouse is moved over the Note BBCode icon. The text inside the box can accept BBCodes, and the pop-up box will close automatically when the mouse is moved off the icon (unless the user clicks the icon, which will make the pop-up box stick in place until manually closed or until the cursor is moved a certain distance away from the pop-up box). Parses also smilies. BBcodes are automatically installed by the extension, no need to any manual input, just set to display on posting in ACP if you like.",
 	"homepage": "http://3d-i.github.io/notebbcode/",
-	"version": "1.0.0-b2",
+	"version": "1.0.0-b3",
 	"license": "GPL-2.0",
 	"authors":
 	[
@@ -33,7 +33,7 @@
 			"Prime note bbcode",
 		"soft-require":
 		{
-			"phpbb/phpbb": ">=3.1.7-pl1,<3.2.*@dev"
+			"phpbb/phpbb": ">=3.1.7-pl1,<3.2.0@dev"
 		}
 	}
 }

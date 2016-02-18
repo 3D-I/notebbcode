@@ -1,14 +1,11 @@
 <?php
 /**
 *
-* notebbcode (Prime Note Bbcode) - extension
+* @package phpBB Extension - notebbcode
+* @copyright (c) 2016 3Di (Marco T.)
+* @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
-* @copyright (c) 2016 3Di
-*
-* (based on the hard work of Matt Friedman/VSE)
-*
-* @license GNU General Public License, version 2 (GPL-2.0)
-*
+* (migration based on the hard work of Matt Friedman/VSE)
 */
 
 namespace threedi\notebbcode\migrations;
@@ -30,34 +27,29 @@ class notebbcode_1 extends \phpbb\db\migration\migration
 	public function revert_data()
 	{
 		return array(
-			array('custom', array(array(&$this, 'remove_notebbcodes'))),
+			array('custom', array(array(&$this, 'notebbcodes_behind'))),
 		);
 	}
 
 	/**
-	 * Remove BBCodes, used by migrations to perform removes
+	 * notebbcodes left behind, hides the bbcode buttons on posting
 	 *
-	 * @param array $bbcode_tags Array of BBCode tags to remove
+	 * @param array $bbcode_tags Array of noteBBCodes tags to hide
 	 * @return null
 	 * @access public
 	 */
-	public function remove_notebbcodes($bbcode_tags)
+	public function notebbcodes_behind($bbcode_tags)
 	{
-		global $cache;
-
 		/**
-		 * @var array An array of bbcodes tags to remove
+		 * @var array An array of notebbcodes (tags) to be left behind
 		 */
 		$bbcode_tags = array('note', 'note=');
 
-		// remove existing bbcodes
-		$sql = 'DELETE FROM ' . BBCODES_TABLE . '
-			WHERE ' . $this->db->sql_in_set('bbcode_tag', $bbcode_tags) . '
-			OR bbcode_id < 0';
-		$this->db->sql_query($sql);
-
-		// purge the bbcodes' cache
-		$cache->destroy('sql', BBCODES_TABLE);
+		// set to null the display on posting
+		$sql = 'UPDATE ' . BBCODES_TABLE . '
+			SET display_on_posting = 0
+			WHERE ' . $this->db->sql_in_set('bbcode_tag', $bbcode_tags);
+			$this->db->sql_query($sql);
 	}
 
 	/**
@@ -85,7 +77,7 @@ class notebbcode_1 extends \phpbb\db\migration\migration
 				'bbcode_match'		=> '[note]{TEXT}[/note]',
 				'bbcode_tpl'		=> '<span class="prime_bbcode_note_spur" onmouseover="show_note(this);" onmouseout="hide_note(this);" onclick="lock_note(this);"></span><span class="prime_bbcode_note">{TEXT}</span>',
 				'bbcode_helpline'	=> '[note]note text[/note]',
-				'display_on_posting'=> 1,
+				'display_on_posting'=> 0,
 			),
 			'note=' => array(
 				'bbcode_match'		=> '[note={TEXT1}]{TEXT2}[/note]',
