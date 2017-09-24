@@ -1,3 +1,12 @@
-<!-- INCLUDECSS @threedi_notebbcode/prime_bbcode_note.css -->
-<!-- INCLUDEJS @threedi_notebbcode/prime_bbcode_note.js -->
+{# Comment: includes only if necessary #}
+
+{% if not INCLUDED_PRIMEBBCODENOTECSS %}
+	{% INCLUDECSS '@threedi_notebbcode/prime_bbcode_note.css' %}
+	{% set INCLUDED_PRIMEBBCODENOTECSS = true %}
+{% endif %}
+{% if not INCLUDED_PRIMEBBCODENOTEJS %}
+	{% INCLUDEJS '@threedi_notebbcode/prime_bbcode_note.js' %}
+	{% DEFINE INCLUDED_PRIMEBBCODENOTEJS = true %}
+{% endif %}
+
 <div id="info_note" onmouseover="show_note();" onmouseout="hide_note();"></div>

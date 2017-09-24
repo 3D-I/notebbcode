@@ -2,7 +2,7 @@
 /**
 *
 * @package phpBB Extension - notebbcode
-* @copyright (c) 2016 3Di (Marco T.)
+* @copyright (c) 2016, 2017 3Di (Marco T.)
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
 * (migration based on the hard work of Matt Friedman/VSE)
