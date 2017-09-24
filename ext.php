@@ -9,7 +9,6 @@
 
 namespace threedi\notebbcode;
 
-
 /**
 * Extension class for custom enable/disable/purge actions
 */
