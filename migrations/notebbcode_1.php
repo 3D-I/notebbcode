@@ -69,23 +69,40 @@ class notebbcode_1 extends \phpbb\db\migration\migration
 
 		$bbcode_tool = new \acp_bbcodes();
 
-		/**
-		 * @var array An array of bbcodes data to install
-		 */
-		$bbcode_data = array(
-			'note' => array(
-				'bbcode_match'		=> '[note]{TEXT}[/note]',
-				'bbcode_tpl'		=> '<span class="prime_bbcode_note_spur" onmouseover="show_note(this);" onmouseout="hide_note(this);" onclick="lock_note(this);"></span><span class="prime_bbcode_note">{TEXT}</span>',
-				'bbcode_helpline'	=> '[note]note text[/note]',
-				'display_on_posting'=> 0,
-			),
-			'note=' => array(
-				'bbcode_match'		=> '[note={TEXT1}]{TEXT2}[/note]',
-				'bbcode_tpl'		=> '<span class="prime_bbcode_note_text" onmouseover="show_note(this);" onmouseout="hide_note(this);" onclick="lock_note(this);">{TEXT1}</span><span class="prime_bbcode_note_spur" onmouseover="show_note(this);" onmouseout="hide_note(this);" onclick="lock_note(this);"></span><span class="prime_bbcode_note">{TEXT2}</span>',
-				'bbcode_helpline'	=> '[note=text-to-note]note text[/note]',
-				'display_on_posting'=> 0,
-			),
-		);
+		if (phpbb_version_compare(PHPBB_VERSION, '3.1.11', '>=') && phpbb_version_compare(PHPBB_VERSION, '3.2.0@dev', '<'))
+		{
+			/**
+			 * @var array An array of bbcodes data to install 3.1
+			 */
+			$bbcode_data = array(
+				'note' => array(
+					'bbcode_match'		=> '[note]{TEXT}[/note]',
+					'bbcode_tpl'		=> '<span class="prime_bbcode_note_spur" onmouseover="show_note(this);" onmouseout="hide_note(this);" onclick="lock_note(this);"></span><span class="prime_bbcode_note">{TEXT}</span>',
+					'bbcode_helpline'	=> '[note]note text[/note]',
+					'display_on_posting'=> 0,
+				),
+				'note=' => array(
+					'bbcode_match'		=> '[note={TEXT1}]{TEXT2}[/note]',
+					'bbcode_tpl'		=> '<span class="prime_bbcode_note_text" onmouseover="show_note(this);" onmouseout="hide_note(this);" onclick="lock_note(this);">{TEXT1}</span><span class="prime_bbcode_note_spur" onmouseover="show_note(this);" onmouseout="hide_note(this);" onclick="lock_note(this);"></span><span class="prime_bbcode_note">{TEXT2}</span>',
+					'bbcode_helpline'	=> '[note=text-to-note]note text[/note]',
+					'display_on_posting'=> 0,
+				),
+			);
+		}
+		else
+		{
+			/**
+			 * @var array An array of bbcodes data to install 3.2
+			 */
+			$bbcode_data = array(
+				'note' => array(
+					'bbcode_match'		=> '[note text={TEXT1;optional}]{TEXT2}[/note]',
+					'bbcode_tpl'		=> '<xsl:if test="@text"><span class="prime_bbcode_note_text" onmouseover="show_note(this);" onmouseout="hide_note(this);" onclick="lock_note(this);"><xsl:value-of select="@text"/></span></xsl:if><span class="prime_bbcode_note_spur" onmouseover="show_note(this);" onmouseout="hide_note(this);" onclick="lock_note(this);"/><span class="prime_bbcode_note"><xsl:apply-templates/></span>',
+					'bbcode_helpline'	=> '[note]note text[/note] - OR - [note=note text]note text[/note]',
+					'display_on_posting'=> 0,
+				),
+			);
+		}
 
 		foreach ($bbcode_data as $bbcode_name => $bbcode_array)
 		{
