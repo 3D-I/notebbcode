@@ -2,11 +2,12 @@
 	position:absolute;
 	display: none;
 	z-index: 100;
-	max-width: 300px;
+	max-width: auto;
 	padding: 0 2px 5px 5px;
 	margin: 30px;
 	box-shadow: 1px 2px 3px 4px grey;
 	border-radius: 3%;
+	background-color: Window;
 }
 
 #info_note * {
