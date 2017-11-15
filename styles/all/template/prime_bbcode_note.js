@@ -22,7 +22,7 @@ function get_next_sibling(obj, class_name)
 	{
 		if (typeof(class_name) != "undefined")
 		{
-			if(obj.className == class_name)
+			if (obj.className == class_name)
 			{
 				return(obj);
 			}
