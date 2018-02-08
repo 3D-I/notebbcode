@@ -62,12 +62,12 @@ function show_note(icon_obj)
 		if (close_icon)
 		{
 			close_icon.style.display = (bubble.lock ? 'block' : 'none');
-			close_icon.style.left = '-5px'; // REMOVED FROM HERE
+			close_icon.style.left = '-5px';
 		}
 		bubble.obj.style.top  = ((position[1] - position[3]) + 5 - ((navigator.appName == 'Microsoft Internet Explorer') ? 0 : 5)) + 'px';
-		bubble.obj.style.left = (position[0] + position[2] + 4) + 'px'; // REMOVED FROM HERE
-		bubble.obj.style.paddingLeft = 0; // REMOVED FROM HERE (HAS TO BE 0!)
-		bubble.obj.style.paddingBottom = 0; // CAN NOT REMOVE THE ENTIRE LINE
+		bubble.obj.style.left = (position[0] + position[2] + 4) + 'px';
+		bubble.obj.style.paddingLeft = 0;
+		bubble.obj.style.paddingBottom = 0;
 		bubble.obj.style.display = "block";
 		icon_obj.title = "";
 	}
