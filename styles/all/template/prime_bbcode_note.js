@@ -48,7 +48,7 @@ function show_note(icon_obj)
 	{
 		clearTimeout(bubble.timer_id);
 	}
-	if (!bubble.obj) 
+	if (!bubble.obj)
 	{
 		bubble.obj = document.getElementById("info_note");
 	}
@@ -58,17 +58,16 @@ function show_note(icon_obj)
 		var position = find_pos(icon_obj);
 		bubble.obj.innerHTML = '<span id="note-lock"><\/span><table><tr><td><a name="note-close" id="note-close" title="" onclick="close_note(); return false;"><\/a>' + data_obj.innerHTML + '<div class="min-width"><\/div><\/td><\/tr><\/table>';
 
-		var pad = (bubble.lock) ? 5 : 0;
 		var close_icon = document.getElementById('note-close');
 		if (close_icon)
 		{
 			close_icon.style.display = (bubble.lock ? 'block' : 'none');
-			close_icon.style.left = parseInt(pad - 5) + 'px';
+			close_icon.style.left = '-5px'; // REMOVED FROM HERE
 		}
 		bubble.obj.style.top  = ((position[1] - position[3]) + 5 - ((navigator.appName == 'Microsoft Internet Explorer') ? 0 : 5)) + 'px';
-		bubble.obj.style.left = (position[0] + position[2] - pad + 4) + 'px';
-		bubble.obj.style.paddingLeft = pad + 'px';
-		bubble.obj.style.paddingBottom = pad + 'px';
+		bubble.obj.style.left = (position[0] + position[2] + 4) + 'px'; // REMOVED FROM HERE
+		bubble.obj.style.paddingLeft = 0; // REMOVED FROM HERE (HAS TO BE 0!)
+		bubble.obj.style.paddingBottom = 0; // CAN NOT REMOVE THE ENTIRE LINE
 		bubble.obj.style.display = "block";
 		icon_obj.title = "";
 	}
